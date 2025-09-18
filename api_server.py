@@ -47,7 +47,7 @@ def load_reviews_into_db():
 load_reviews_into_db()
 
 # -----------------------------
-# API Endpoints (unchanged except comments)
+# API Endpoints (unchanged except comments)!!!!
 # -----------------------------
 @app.get("/")
 def root():
