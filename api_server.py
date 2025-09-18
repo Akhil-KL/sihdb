@@ -1,38 +1,67 @@
 from fastapi import FastAPI
-# from pydantic import BaseModel   # 👈 UNCOMMENT this when using friend's API POST
 import chromadb
+import json   # ✅ ADDED (for loading reviews.json)
+import os     # ✅ ADDED (to check if file exists)
 
 app = FastAPI()
 
-# ✅ Connect to ChromaDB (persistent storage)
-client = chromadb.PersistentClient(path="D:/hacksih/chroma_store")
+# ✅ CHANGED: path is now relative (works in Railway container, not Windows D:/ drive)
+CHROMA_PATH = "./chroma_store"
+REVIEWS_FILE = "./reviews.json"
+
+# ✅ Connect to ChromaDB
+client = chromadb.PersistentClient(path=CHROMA_PATH)
 collection = client.get_or_create_collection("corporate_bills_reviews")
 
 # -----------------------------
-# 1. Define request schema (for friend's API)
+# 🔥 NEW FUNCTION: Auto-load data from reviews.json at startup
 # -----------------------------
-# ⚡ When your friend’s API is ready, uncomment this block
-# class BillRequest(BaseModel):
-#     bill_name: str   # 👈 API will POST this field
+def load_reviews_into_db():
+    if not os.path.exists(REVIEWS_FILE):
+        print("⚠️ reviews.json not found in container!")
+        return
 
+    with open(REVIEWS_FILE, "r", encoding="utf-8") as f:
+        reviews = json.load(f)
+
+    # ✅ Clear old data before reloading
+    collection.delete(where={})
+
+    # ✅ Insert fresh data into ChromaDB
+    for i, r in enumerate(reviews):
+        bill_name = r.get("bill") or r.get("Bill") or r.get("bill_name")
+        if not bill_name:
+            continue
+        collection.add(
+            ids=[str(i)],
+            documents=[r.get("review", "")],
+            metadatas=[{
+                "bill": bill_name,
+                "sentiment": r.get("sentiment"),
+                "time": r.get("time")
+            }]
+        )
+    print(f"✅ Loaded {len(reviews)} reviews into ChromaDB")
+
+# ✅ CALL FUNCTION at startup (this is new)
+load_reviews_into_db()
+
+# -----------------------------
+# API Endpoints (unchanged except comments)
+# -----------------------------
 @app.get("/")
 def root():
     return {"message": "✅ API is live! Use /bill endpoint."}
 
-# -----------------------------
-# 2. Endpoint for fetching reviews by bill
-# -----------------------------
-
 @app.get("/bill")
 def get_reviews_by_bill():
-    bill_name = "Taxation Amendment Bill 2023"   # 👈 for now, testing only
+    bill_name = "Taxation Amendment Bill 2023"   # 👈 still hardcoded for now
 
-    # Pull everything from DB
+    # (same as before) - fetch everything from DB
     all_data = collection.get()
     available_bills = {meta.get("bill") for meta in all_data["metadatas"]}
     print("📌 Bills inside DB:", available_bills)
 
-    # Filter manually
     reviews = []
     for doc, meta in zip(all_data["documents"], all_data["metadatas"]):
         if meta.get("bill") == bill_name:
@@ -56,7 +85,3 @@ def get_reviews_by_bill():
         "total_reviews": len(reviews),
         "reviews": reviews
     }
-
-
-all_data = collection.get()
-print("🔍 Available bills in DB:", [m.get("bill") for m in all_data["metadatas"]])
