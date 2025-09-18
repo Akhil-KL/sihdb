@@ -12,6 +12,36 @@
         "time": "2023-07-15"
     },
     {
+        "bill": "Taxation Amendment Bill 2023",
+        "review": "This bill might help increase government revenue without drastically affecting large corporations.",
+        "sentiment": "neutral",
+        "time": "2023-07-16"
+    },
+    {
+        "bill": "Taxation Amendment Bill 2023",
+        "review": "Small businesses are struggling; these new taxes add unnecessary burden.",
+        "sentiment": "negative",
+        "time": "2023-07-17"
+    },
+    {
+        "bill": "Taxation Amendment Bill 2023",
+        "review": "The simplification of tax brackets is a welcome change for middle-income earners.",
+        "sentiment": "positive",
+        "time": "2023-07-18"
+    },
+    {
+        "bill": "Taxation Amendment Bill 2023",
+        "review": "Some clauses are unclear, but overall it seems manageable for most taxpayers.",
+        "sentiment": "neutral",
+        "time": "2023-07-19"
+    },
+    {
+        "bill": "Taxation Amendment Bill 2023",
+        "review": "Good attempt at reform, but needs better clarity and support for startups.",
+        "sentiment": "positive",
+        "time": "2023-07-20"
+    },
+    {
         "bill": "Renewable Energy Subsidy Bill 2022",
         "review": "This bill supports renewable companies and boosts green energy adoption.",
         "sentiment": "positive",
