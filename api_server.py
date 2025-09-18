@@ -25,7 +25,10 @@ def load_reviews_into_db():
         reviews = json.load(f)
 
     # ✅ Clear old data before reloading
-    collection.delete(where={})
+    # Clear existing records safely
+    existing = collection.get()
+    if existing["ids"]:
+        collection.delete(ids=existing["ids"])
 
     # ✅ Insert fresh data into ChromaDB
     for i, r in enumerate(reviews):
