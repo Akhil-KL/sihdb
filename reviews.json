@@ -1,0 +1,194 @@
+[
+    {
+        "bill": "Taxation Amendment Bill 2023",
+        "review": "The new tax increase will hurt small businesses significantly.",
+        "sentiment": "negative",
+        "time": "2023-07-14"
+    },
+    {
+        "bill": "Taxation Amendment Bill 2023",
+        "review": "Corporate tax adjustments seem fair, but implementation is confusing.",
+        "sentiment": "negative",
+        "time": "2023-07-15"
+    },
+    {
+        "bill": "Renewable Energy Subsidy Bill 2022",
+        "review": "This bill supports renewable companies and boosts green energy adoption.",
+        "sentiment": "positive",
+        "time": "2022-11-02"
+    },
+    {
+        "bill": "Renewable Energy Subsidy Bill 2022",
+        "review": "Renewable subsidies may increase electricity costs for regular consumers.",
+        "sentiment": "negative",
+        "time": "2022-11-10"
+    },
+    {
+        "bill": "Financial Transparency Act 2021",
+        "review": "Improves investor confidence by ensuring clarity in reports.",
+        "sentiment": "positive",
+        "time": "2021-06-20"
+    },
+    {
+        "bill": "Financial Transparency Act 2021",
+        "review": "Compliance requirements are heavy for startups with limited resources.",
+        "sentiment": "negative",
+        "time": "2021-06-25"
+    },
+    {
+        "bill": "Healthcare Accessibility Bill 2022",
+        "review": "This bill will reduce costs for rural healthcare access.",
+        "sentiment": "positive",
+        "time": "2022-03-11"
+    },
+    {
+        "bill": "Healthcare Accessibility Bill 2022",
+        "review": "Hospitals face budget shortages with new subsidies in place.",
+        "sentiment": "negative",
+        "time": "2022-03-14"
+    },
+    {
+        "bill": "Education Reforms Act 2021",
+        "review": "Free access to digital libraries is a great step for students.",
+        "sentiment": "positive",
+        "time": "2021-09-05"
+    },
+    {
+        "bill": "Education Reforms Act 2021",
+        "review": "Reform lacks clarity on rural education improvement.",
+        "sentiment": "negative",
+        "time": "2021-09-08"
+    },
+    {
+        "bill": "Climate Action Bill 2023",
+        "review": "Strict carbon emission caps push companies to innovate faster.",
+        "sentiment": "positive",
+        "time": "2023-02-20"
+    },
+    {
+        "bill": "Climate Action Bill 2023",
+        "review": "Industries will struggle with compliance due to high cost requirements.",
+        "sentiment": "negative",
+        "time": "2023-02-23"
+    },
+    {
+        "bill": "Digital Privacy Act 2022",
+        "review": "Protects user data and builds trust in digital platforms.",
+        "sentiment": "positive",
+        "time": "2022-05-01"
+    },
+    {
+        "bill": "Digital Privacy Act 2022",
+        "review": "Adds too much paperwork for smaller online businesses.",
+        "sentiment": "negative",
+        "time": "2022-05-03"
+    },
+    {
+        "bill": "Infrastructure Development Bill 2021",
+        "review": "Boosts public transport projects and benefits urban commuters.",
+        "sentiment": "positive",
+        "time": "2021-12-10"
+    },
+    {
+        "bill": "Infrastructure Development Bill 2021",
+        "review": "Budget allocation unfairly favors big cities over rural areas.",
+        "sentiment": "negative",
+        "time": "2021-12-12"
+    },
+    {
+        "bill": "Agriculture Support Bill 2022",
+        "review": "Farmers gain subsidies and relief on fertilizers.",
+        "sentiment": "positive",
+        "time": "2022-08-04"
+    },
+    {
+        "bill": "Agriculture Support Bill 2022",
+        "review": "Long-term sustainability of subsidies is questionable.",
+        "sentiment": "negative",
+        "time": "2022-08-07"
+    },
+    {
+        "bill": "Labor Rights Amendment 2023",
+        "review": "Workers now have stronger protections against unfair dismissals.",
+        "sentiment": "positive",
+        "time": "2023-04-15"
+    },
+    {
+        "bill": "Labor Rights Amendment 2023",
+        "review": "Increases compliance cost for small businesses.",
+        "sentiment": "negative",
+        "time": "2023-04-16"
+    },
+    {
+        "bill": "Cybersecurity Enhancement Bill 2022",
+        "review": "Mandates better systems, making corporate networks safer.",
+        "sentiment": "positive",
+        "time": "2022-09-02"
+    },
+    {
+        "bill": "Cybersecurity Enhancement Bill 2022",
+        "review": "Overly complex security audits will slow down startups.",
+        "sentiment": "negative",
+        "time": "2022-09-05"
+    },
+    {
+        "bill": "Public Health Funding Act 2021",
+        "review": "Allocates funds for pandemic preparedness, excellent move.",
+        "sentiment": "positive",
+        "time": "2021-01-10"
+    },
+    {
+        "bill": "Public Health Funding Act 2021",
+        "review": "Funds distribution lacks transparency and fairness.",
+        "sentiment": "negative",
+        "time": "2021-01-15"
+    },
+    {
+        "bill": "Housing Support Bill 2022",
+        "review": "Affordable housing schemes help middle-class families.",
+        "sentiment": "positive",
+        "time": "2022-10-03"
+    },
+    {
+        "bill": "Housing Support Bill 2022",
+        "review": "Land acquisition process is controversial and unfair.",
+        "sentiment": "negative",
+        "time": "2022-10-05"
+    },
+    {
+        "bill": "Transport Safety Act 2023",
+        "review": "Mandatory safety standards improve road safety.",
+        "sentiment": "positive",
+        "time": "2023-06-12"
+    },
+    {
+        "bill": "Transport Safety Act 2023",
+        "review": "Implementation timeline is too short for transport companies.",
+        "sentiment": "negative",
+        "time": "2023-06-13"
+    },
+    {
+        "bill": "Digital Payments Act 2021",
+        "review": "Encourages digital transactions and boosts financial inclusion.",
+        "sentiment": "positive",
+        "time": "2021-04-22"
+    },
+    {
+        "bill": "Digital Payments Act 2021",
+        "review": "Smaller merchants face high transaction fees under this bill.",
+        "sentiment": "negative",
+        "time": "2021-04-25"
+    },
+    {
+        "bill": "Renewable Energy Subsidy Bill 2022",
+        "review": "Corporate bodies praise incentives for solar adoption.",
+        "sentiment": "positive",
+        "time": "2022-11-15"
+    },
+    {
+        "bill": "Taxation Amendment Bill 2023",
+        "review": "Large corporations welcome clarity in tax filing rules.",
+        "sentiment": "positive",
+        "time": "2023-07-20"
+    }
+]
