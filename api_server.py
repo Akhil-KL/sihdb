@@ -1,11 +1,10 @@
 from fastapi import FastAPI
 import chromadb
-import json   # ✅ ADDED (for loading reviews.json)
-import os     # ✅ ADDED (to check if file exists)
+import json
+import os
 
 app = FastAPI()
 
-# ✅ CHANGED: path is now relative (works in Railway container, not Windows D:/ drive)
 CHROMA_PATH = "./chroma_store"
 REVIEWS_FILE = "./reviews.json"
 
@@ -13,8 +12,9 @@ REVIEWS_FILE = "./reviews.json"
 client = chromadb.PersistentClient(path=CHROMA_PATH)
 collection = client.get_or_create_collection("corporate_bills_reviews")
 
+
 # -----------------------------
-# 🔥 NEW FUNCTION: Auto-load data from reviews.json at startup
+# Load reviews into DB
 # -----------------------------
 def load_reviews_into_db():
     if not os.path.exists(REVIEWS_FILE):
@@ -24,13 +24,12 @@ def load_reviews_into_db():
     with open(REVIEWS_FILE, "r", encoding="utf-8") as f:
         reviews = json.load(f)
 
-    # ✅ Clear old data before reloading
-    # Clear existing records safely
+    # Clear existing records
     existing = collection.get()
     if existing["ids"]:
         collection.delete(ids=existing["ids"])
 
-    # ✅ Insert fresh data into ChromaDB
+    # Insert fresh data
     for i, r in enumerate(reviews):
         bill_name = r.get("bill") or r.get("Bill") or r.get("bill_name")
         if not bill_name:
@@ -46,21 +45,34 @@ def load_reviews_into_db():
         )
     print(f"✅ Loaded {len(reviews)} reviews into ChromaDB")
 
-# ✅ CALL FUNCTION at startup (this is new)
+
+# Load data at startup
 load_reviews_into_db()
 
+
 # -----------------------------
-# API Endpoints (unchanged except comments)!!!!
+# API Endpoints
 # -----------------------------
 @app.get("/")
 def root():
-    return {"message": "✅ API is live! Use /bill endpoint."}
+    return {"message": "✅ API is live! Use /bill?name=<bill_name> endpoint."}
+
 
 @app.get("/bill")
 def get_reviews_by_bill():
-    bill_name = "Taxation Amendment Bill 2023"   # 👈 still hardcoded for now
+    # -----------------------------
+    # 2. Fetch current bill name from external API
+    # -----------------------------
+    try:
+        resp = requests.get("https://affectionate-intuition-production-5f8d.up.railway.app/bill")
+        resp.raise_for_status()
+        bill_name = resp.json().get("bill", "").strip()
+    except Exception as e:
+        return {"error": f"Failed to fetch bill from external API: {e}"}
 
-    # (same as before) - fetch everything from DB
+    if not bill_name:
+        return {"message": "No bill name returned from external API"}
+
     all_data = collection.get()
     available_bills = {meta.get("bill") for meta in all_data["metadatas"]}
     print("📌 Bills inside DB:", available_bills)

@@ -1,4 +1,3 @@
-# review_db_setup.py
 import json
 import chromadb
 from sentence_transformers import SentenceTransformer
@@ -21,7 +20,7 @@ client = chromadb.PersistentClient(path="D:/hacksih/chroma_store")
 # -----------------------------
 collection = client.get_or_create_collection("corporate_bills_reviews")
 
-# ⚠️ COMMENT THIS OUT (don’t wipe data each run unless you want a reset)
+# ⚠️ Uncomment ONLY if you want to wipe everything
 # collection.delete(where={})
 
 # -----------------------------
@@ -33,11 +32,8 @@ model = SentenceTransformer("all-MiniLM-L6-v2")
 # 5. Store reviews in the collection
 # -----------------------------
 for i, r in enumerate(reviews):
-    print(f"Row {i}: keys = {list(r.keys())}")
-
-    bill_name = r.get("bill") or r.get("bill") or ""  # handle missing key
-
-    if not bill_name.strip():
+    bill_name = r.get("bill", "").strip()
+    if not bill_name:
         print(f"⚠️ Skipping row {i} — no bill field found")
         continue
 
@@ -48,12 +44,11 @@ for i, r in enumerate(reviews):
         embeddings=[emb],
         ids=[str(i)],
         metadatas=[{
-            "bill": bill_name.strip(),
+            "bill": bill_name,
             "sentiment": r.get("sentiment", ""),
             "time": r.get("time", "")
         }]
     )
-
 
 # -----------------------------
 # 6. Verify stored data
